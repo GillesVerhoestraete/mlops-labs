@@ -22,6 +22,7 @@
 | List all images     | `docker images`         |
 | Stop a container    | `docker stop CONTAINER` |
 | Remove a container  | `docker rm CONTAINER`   |
+| docker compose file starten (-d zorgt ervoor dat het op de achtergrond word uitgevoerd)| `docker-compose -f docker-compose.portainer.yml up -d` |
 
 ## Git workflow
 
