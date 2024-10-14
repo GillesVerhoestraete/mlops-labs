@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  webapp:
+    image: gillesverhoestraete/webapp  
+    ports:
+      - "3000:3000"
+    container_name: webapp-container
+    environment:
+      - MYSQL_URL=mysql://root:hogent23@database:3306/docker-opdracht-1
+    depends_on:
+      database:
+        condition: service_started  
+    command: ["sh", "-c", "sleep 10 && yarn start"]
+
+  database:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: hogent23
+      MYSQL_DATABASE: docker-opdracht-1
+      MYSQL_USER: gilles
+      MYSQL_PASSWORD: hogent23
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  test:
+    image: gillesverhoestraete/webapp  
+    environment:
+      - API_URL=http://webapp:3000  
+    depends_on:
+      webapp:
+        condition: service_started  
+    command: ["yarn", "test"]  
+
+volumes:
+  db_data:
