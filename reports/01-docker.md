@@ -7,7 +7,7 @@
 
 ## Assignment description
 
-Describe the assignment in your own words. What did you have to do? What was the goal of the assignment?
+Ik heb geleerd hoe ik een docker omgeving opstel, het bouwen van images en het draaien van een nodes.js applicatie. Het gebruik van een sqlite-database en een mysql database te gebruiken in een docker omgeving. Ook het leren optimaliseren van images.
 
 ## Proof of work done
 
