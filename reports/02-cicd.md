@@ -15,7 +15,50 @@ Include screenshots, code snippets, etc. to prove that you completed the assignm
 
 ### 1.1 Create a GitHub repository for the sample application
 
-d
+Ik heb mijn naam en email ingesteld zodat het dezelfde zijn als op github door deze code:
+
+```a
+git config --global user.name "GillesVerhoestraete"
+git config --global user.email "gilles.verhoestraete@student.hogent.be"
+```
+
+daarna heb ik de inhoud van mijn webapp map gekopieerd naar een andere map op mijn systeem.
+
+hierna heb ik in de nieuwe map `git init` gebruikt om een nieuwe Git-repository te initialiseren. Daarna heb ik `git add .` gebruikt om om wijzigingen in de werkdirectory aan de staging area toe te voegen in een Git-repository. Dan heb ik `git status` gebruikt om te kijken dat ik zeker geen database bestand heb toegevoegd. Dit was het niet geval
+
+![Git status](../reports/img/git-status.png)
+
+Hierna heb ik de wijzigingen gecommit `git commit -m "Initial commit of sample application"`. Dan heb ik de nieuwe remote repository toegevoegd aan de lokale Git-repository aan de hand van `git remote add origin https://github.com/GillesVerhoestraete/MLops-cicd.git`. Dan noem ik de branch 'main' aan de hand van deze code `git branch -M main`. Uiteindelijk push ik de code naar github aan de hand van `git push -u origin main`.
+
+![Git push](../reports/img/git-push.png)
+
+### 1.2 Create a new GitHub Actions workflow
+
+Ik heb een `demo.yml` bestand gemaakt in de volgende map: .github/workflow met het volgende code in:
+
+```a
+---
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "This job's status is ${{ job.status }}."
+```
+
+daarna heb ik deze nieuwe wijzigingen gepushed naar github.
+
+![Git action](../reports/img/github-action.png)
 
 ## Evaluation criteria
 
